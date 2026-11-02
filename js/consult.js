@@ -72,6 +72,21 @@
   };
   var PH = { room: "○○교실", teacher: "○○○", phone: "010-0000-0000", phil: "선생님의 교육 철학을 적어 주세요." };
 
+  /* 예전 주소(mijini164-ui.github.io/hanuri-consult)에서 넘어올 때 적어 둔 내용을 가져와요.
+     이 기기에서 새 주소로 이미 선생님 정보를 적었다면 그대로 둬요. */
+  (function importFromOld() {
+    var m = /^#import=(.+)$/.exec(location.hash || "");
+    if (!m) return;
+    try {
+      var cur = null; try { cur = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+      if (!cur || !(cur.teacher || cur.phone || cur.room)) {
+        var txt = decodeURIComponent(escape(atob(decodeURIComponent(m[1]))));
+        var obj = JSON.parse(txt);
+        if (obj && typeof obj === "object") localStorage.setItem(KEY, JSON.stringify(obj));
+      }
+    } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  })();
   var state = load();
   function load() {
     var s = null;
