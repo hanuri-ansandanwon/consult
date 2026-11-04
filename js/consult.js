@@ -54,7 +54,7 @@
   COURSES.forEach(function (g) { g[1].forEach(function (c) { CMAP[c[0]] = c; }); });
   var CUSTOM = "__custom__";
   /* 수업 기준 2에서 고르는 문구 */
-  var RULE2 = ["당일 이유 없는 취소·노쇼는 보강이 어려워요", "보강은 초등 40분, 중등 50분", "보강데이 운영", "기존 반에서 보강 진행"];
+  var RULE2 = ["당일 연락 없이 빠진 수업은 보강이 어려워요", "보강은 초등 40분, 중등 50분", "보강데이 운영", "기존 반에서 보강 진행"];
   function blankSlot() { return { course: "", day: "", time: "", name: "", grade: "", intro: "" }; }
 
   var DEF = {
